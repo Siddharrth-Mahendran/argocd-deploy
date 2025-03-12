@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: dockerfile
+  name: nginx-deployment
+  labels:
+    app: dockerfile
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: dockerfile
+  template:
+    metadata:
+      labels:
+        app: dockerfile
+    spec:
+      containers:
+      - name: java-maven
+        image: siddhumahi01/java-tomcat-mavan:1710692839
+        ports:
+        - containerPort: 80
